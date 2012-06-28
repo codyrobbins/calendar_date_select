@@ -3,7 +3,8 @@ require "calendar_date_select/form_helpers.rb"
 require "calendar_date_select/includes_helper.rb"
 require "action_view/helpers"
 
-if Object.const_defined?(:Rails) && File.directory?(Rails.root.to_s + "/public")
+#if Object.const_defined?(:Rails) && File.directory?(Rails.root.to_s + "/public")
+if Object.const_defined?(:Rails)
   ActionView::Helpers::FormHelper.send(:include, CalendarDateSelect::FormHelpers)
   ActionView::Base.send(:include, CalendarDateSelect::FormHelpers)
   ActionView::Base.send(:include, CalendarDateSelect::IncludesHelper)
@@ -22,13 +23,13 @@ if Object.const_defined?(:Rails) && File.directory?(Rails.root.to_s + "/public")
     end
   end
 
-  # install files
-  if !File.exists?(RAILS_ROOT + '/public/javascripts/calendar_date_select/calendar_date_select.js') and !File.exists?(RAILS_ROOT + '/app/assets/javascripts/calendar_date_select/calendar_date_select.js')
-    ['/public', '/public/javascripts/calendar_date_select', '/public/stylesheets/calendar_date_select', '/public/images/calendar_date_select', '/public/javascripts/calendar_date_select/locale'].each do |dir|
-      source = File.dirname(__FILE__) + "/../#{dir}"
-      dest = RAILS_ROOT + dir
-      FileUtils.mkdir_p(dest)
-      FileUtils.cp(Dir.glob(source+'/*.*'), dest)
-    end
-  end
+#  # install files
+#  if !File.exists?(RAILS_ROOT + '/public/javascripts/calendar_date_select/calendar_date_select.js') and !File.exists?(RAILS_ROOT + '/app/assets/javascripts/calendar_date_select/calendar_date_select.js')
+#    ['/public', '/public/javascripts/calendar_date_select', '/public/stylesheets/calendar_date_select', '/public/images/calendar_date_select', '/public/javascripts/calendar_date_select/locale'].each do |dir|
+#      source = File.dirname(__FILE__) + "/../#{dir}"
+#      dest = RAILS_ROOT + dir
+#      FileUtils.mkdir_p(dest)
+#      FileUtils.cp(Dir.glob(source+'/*.*'), dest)
+#    end
+#  end
 end
