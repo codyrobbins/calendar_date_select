@@ -10,18 +10,18 @@ if Object.const_defined?(:Rails)
   ActionView::Base.send(:include, CalendarDateSelect::IncludesHelper)
 
   # Filthy backwards compatibility hooks... grumble
-  if ([Rails::VERSION::MAJOR, Rails::VERSION::MINOR] <=> [2, 2]) == -1
-    ActionView::Helpers::InstanceTag.class_eval do
-      def self.new_with_backwards_compatibility(object_name, method_name, template_object, object = nil)
-        new(object_name, method_name, template_object, nil, object)
-      end
-    end
-
-  else
-    ActionView::Helpers::InstanceTag.class_eval do
-      class << self; alias new_with_backwards_compatibility new; end
-    end
-  end
+#  if ([Rails::VERSION::MAJOR, Rails::VERSION::MINOR] <=> [2, 2]) == -1
+#    ActionView::Helpers::InstanceTag.class_eval do
+#      def self.new_with_backwards_compatibility(object_name, method_name, template_object, object = nil)
+#        new(object_name, method_name, template_object, nil, object)
+#      end
+#    end
+#
+#  else
+#    ActionView::Helpers::InstanceTag.class_eval do
+#      class << self; alias new_with_backwards_compatibility new; end
+#    end
+#  end
 
 #  # install files
 #  if !File.exists?(RAILS_ROOT + '/public/javascripts/calendar_date_select/calendar_date_select.js') and !File.exists?(RAILS_ROOT + '/app/assets/javascripts/calendar_date_select/calendar_date_select.js')
